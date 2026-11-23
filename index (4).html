@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lrows | Official</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0d0d12;
+      --text: #f5f5f5;
+      --accent: linear-gradient(90deg, #6a00ff, #00e0ff);
+      --card: rgba(255, 255, 255, 0.05);
+      --shadow: rgba(0, 0, 0, 0.4);
+    }
+    [data-theme="light"] {
+      --bg: #ffffff;
+      --text: #111111;
+      --card: rgba(0, 0, 0, 0.05);
+      --shadow: rgba(0, 0, 0, 0.1);
+      --accent: linear-gradient(90deg, #7e57c2, #03a9f4);
+    }
+    * {
+      box-sizing: border-box;
+      transition: all 0.3s ease;
+    }
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      overflow-x: hidden;
+      text-align: center;
+    }
+    h1 {
+      font-size: 3.5rem;
+      background: var(--accent);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: glow 6s ease-in-out infinite alternate;
+    }
+    @keyframes glow {
+      from { filter: drop-shadow(0 0 10px #6a00ff); }
+      to { filter: drop-shadow(0 0 25px #00e0ff); }
+    }
+    .subtitle {
+      opacity: 0.8;
+      letter-spacing: 1px;
+      margin-top: -10px;
+    }
+    .links {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin: 2rem 0;
+      flex-wrap: wrap;
+    }
+    .links a {
+      background: var(--card);
+      border-radius: 12px;
+      padding: 0.8rem 1.5rem;
+      text-decoration: none;
+      color: var(--text);
+      box-shadow: 0 4px 15px var(--shadow);
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-weight: 600;
+    }
+    .links a:hover {
+      transform: scale(1.05);
+      background: var(--accent);
+      color: #fff;
+    }
+    .links img {
+      width: 24px;
+      height: 24px;
+    }
+    .section {
+      margin-top: 2rem;
+      background: var(--card);
+      padding: 2rem;
+      border-radius: 20px;
+      width: 90%;
+      max-width: 600px;
+      box-shadow: 0 6px 25px var(--shadow);
+    }
+    .coming {
+      font-style: italic;
+      opacity: 0.7;
+    }
+    .contact {
+      margin-top: 2rem;
+      font-size: 0.9rem;
+      opacity: 0.8;
+    }
+    footer {
+      margin-top: 2rem;
+      font-size: 0.8rem;
+      opacity: 0.6;
+    }
+    .theme-toggle {
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      color: var(--text);
+      cursor: pointer;
+      z-index: 10;
+    }
+    @media (max-width: 500px) {
+      h1 { font-size: 2.5rem; }
+      .links a { font-size: 0.9rem; }
+    }
+  </style>
+</head>
+<body>
+  <button class="theme-toggle" id="themeToggle" aria-label="Tema değiştir">🌙</button>
+
+  <h1>LROWS</h1>
+  <p class="subtitle">Official Artist Page</p>
+
+  <div class="links">
+    <a href="https://open.spotify.com/intl-tr/artist/1NfX2XchoIb9VqZPjMxoz9" target="_blank">
+      <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/spotify.svg" alt="Spotify" />
+      Spotify
+    </a>
+    <a href="https://music.apple.com/tr/artist/lrows/1631553986" target="_blank">
+      <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/applemusic.svg" alt="Apple Music" />
+      Apple Music
+    </a>
+    <a href="https://youtube.com/@lrowsxd" target="_blank">
+      <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/youtube.svg" alt="YouTube" />
+      YouTube
+    </a>
+  </div>
+
+  <div class="section">
+    <h2>🎵 Latest Release</h2>
+    <p class="coming">Coming soon...</p>
+  </div>
+
+  <div class="contact">
+    📩 <a href="mailto:info@lrows.dev" style="color:inherit;">info@lrows.dev</a>
+  </div>
+
+  <footer>© 2025 Lrows. All rights reserved.</footer>
+
+  <script>
+    const btn = document.getElementById('themeToggle');
+    const saved = localStorage.getItem('theme');
+    if (saved === 'light') document.documentElement.setAttribute('data-theme','light');
+
+    btn.textContent = saved === 'light' ? '🌙' : '☀️';
+
+    btn.addEventListener('click', () => {
+      if (document.documentElement.getAttribute('data-theme') === 'light') {
+        document.documentElement.removeAttribute('data-theme');
+        localStorage.setItem('theme','dark');
+        btn.textContent = '☀️';
+      } else {
+        document.documentElement.setAttribute('data-theme','light');
+        localStorage.setItem('theme','light');
+        btn.textContent = '🌙';
+      }
+    });
+  </script>
+</body>
+</html>
